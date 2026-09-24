@@ -1,2 +1,132 @@
 <!DOCTYPE html>
-<html lang="fr"><head><meta charset="UTF-8"><title>Test</title></head><body><h1>Test</h1></body></html>
+<html lang="fr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>La Maison Arabe â€” Haute Gastronomie 3D</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <style>
+    #webgl-canvas { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 0; pointer-events: none; }
+    #custom-cursor { position: fixed; top: 0; left: 0; width: 32px; height: 32px; border: 1.5px solid #d4af37; border-radius: 53S²ö–çFW"ÖWfVçG3¢æöæS²¢Ö–æFWƒ¢““““²G&ç6f÷&Ó¢G&ç6ÆFR‚ÓSRÂÓSR“²G&ç6—F–öã¢v–GF‚ã'2Â†V–v‡Bã'2Â&6¶w&÷VæBã'3²F—7Æ“¢fÆWƒ²Æ–vâÖ—FV×3¢6VçFW#²§W7F–g’Ö6öçFVçC¢6VçFW#²Ğ¢67W7FöÒÖ7W'6÷"ÖF÷B²÷6—F–öã¢f—†VC²F÷¢²ÆVgC¢²v–GFƒ¢gƒ²†V–v‡C¢gƒ²&6¶w&÷VæC¢6CFc3s²&÷&FW"×&F—W3¢S0%; pointer-events: none; z-index: 10000; transform: translate(-50%, -50%); }
+    #custom-cursor-tajine { display: none; font-size: 16px; }
+    body.hover-card #custom-cursor { width: 54px; height: 54px; background: rgba(212,175,55,0.2); }
+    body.hover-card #custom-cursor-tajine { display: block; }
+    body.hover-card #custom-cursor-dot { opacity: 0; }
+    .glass-card { background: rgba(15, 15, 22, 0.85); backdrop-filter: blur(20px); border: 1px solid rgba(212, 175, 55, 0.25); }
+    .glass-card:hover { border-color: #d4af37; box-shadow: 0 20px 40px -10px rgba(212, 175, 55, 0.25); }
+  </style>
+</head>
+<body class="bg-[#060608] text-slate-200 font-sans antialiased overflow-x-hidden relative">
+  <canvas id="webgl-canvas"></canvas>
+  <div id="custom-cursor"><span id="cursor-tajine">ğŸ²</span></div>
+  <div id="custom-cursor-dot"></div>
+
+  <header class="sticky top-0 z-30 bg-[#060608]/90 backdrop-blur-xl border-b border-[#d4af37]/20">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-full border border-[#d4af37] flex items-center justify-center bg-[#d7af37]/10 text-[#d7af37] font-serif font-bold">MA</div>
+        <div>
+          <span class="block font-serif text-xl font-black text-white tracking-widest uppercase">La Maison Arabe</span>
+          <span class="block text-[9px] tracking-widest text-[#d4af37] uppercase font-semibold">Haute Gastronomie & Palace Lounge</span>
+        </div>
+      </div>
+      <a href="https://wa.me/212524387010?text=Bonjour%2C%20je%20souhaite%20r%C3%A9server%20une%20table%20VIP" target="_blank" class="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-gradient-to-r from-[#aa8823] to-[#d4af37] text-[#060608] font-serif font-bold text-xs tracking-wider uppercase shadow-lg shadow-[#d4af37]/20 hover:scale-105 transition">
+        <i data-lucide="message-circle" class="w-4 h-4"></i> RÃ©server WahtsApp VIP
+      </a>
+    </div>
+  </header>
+
+  <main class="relative z-10 max-w-7xl mx-auto px-6 py-16">
+    <section class="text-center max-w-3xl mx-auto mb-20">
+      <span class="inline-block px-4 py-1 rounded-full glass-card text-[#e5c970] text-xs font-serif font-bold tracking-widest uppercase mb-6">Table d'Excellence RecommandÃ©e</span>
+      <h1 class="text-4xl sm:text-6xl font-serif font-black text-white leading-tight mb-6">L'Art Culinaire <span class="text-[#d4af37]">SublimÃ©</span> Ã  Marrakech</h1>
+      <p class="italic text-lg text-slate-300 leading-relaxed mb-8">"Une table lÃ©gendaire oÃ¹ la finesse des Ã©pices rares rencontre la noblesse du terroir."</p>
+      <div class="flex justify-center gap-4">
+        <a href="https://wa.me/212524387010?text=Bonjour%2C%20je%20souhaite%20r%C3%A9server%20une%20table%20VIP" target="_blank" class="px-8 py-3.5 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white font-serif font-bold text-xs tracking-widest uppercase shadow-xl transition flex items-center gap-2">
+          <i data-lucide="calendar" class="w-4 h-4"></i> RÃ©server une Table VIP
+        </a>
+      </div>
+    </section>
+
+    <section class="mb-20">
+      <div class="text-center mb-12">
+        <span class="text-xs font-serif font-bold tracking-widest text-[#d4af37] uppercase">SÃ©lection Signature</span>
+        <h2 class="text-3xl font-serif font-black text-white mt-2">La Carte Gastronomique</h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+        <div class="glass-card p-6 rounded-2xl flex justify-between items-start gap-4"><div class="tilt-glare"></div><div><span class="text-[10px] tracking-widest uppercase text-[#d4af37] font-bold">EntrÃ©e Chaude</span><h4 class="font-serif font-bold text-white text-lg mt-1">Pastilla de Pigeonneau Sauvage</h4><p class="text-xs text-slate-300 text-sm mt-1">Feuilles de ouarka croustillantes, amandes Ã©mondÃ©es torrÃ©fiÃ©es, cannelle fine.</p></div><span class="font-serif font-bold text-[#e5c970] text-lg whitespace-nowrap">140 DH</span></div><div class="glass-card p-6 rounded-2xl flex justify-between items-start gap-4"><div class="tilt-glare"></div><div><span class="text-[10px] tracking-widest uppercase text-[#d4af37] font-bold">Plat de Prestige</span><h4 class="font-serif font-bold text-white text-lg mt-1">Tajine d'Agneau aux Figues</h4><p class="text-xs text-slate-300 text-sm mt-1">Souris d'agneau confite 7 heures, figues sÃ©chÃ©es caramÃ©lisÃ©es au miel de thym.</p></div><span class="font-serif font-bold text-[e5c970] text-lg whitespace-nowrap">220 DH</span></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="relative z-10 bg-[#060608] border-t border-white/5 py-12 px-6 text-slate-400 text-xs text-center">
+    Â© 2026 La Maison Arabe. Tous droits rÃ©servÃ©s. Haute Gastronomie Marocaine.
+  </footer>
+
+  <script>
+    lucide.createIcons();
+    (function init3D() {
+      const canvas = document.getElementById('webgl-canvas');
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
+      camera.position.z = 80;
+      const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      const count = 1200;
+      const geo = new THREE.BufferGeometry();
+      const pos = new Float32Array(count * 3);
+      for(let i=0; i<count*3; i+=3){
+        pos[i] = (Math.random()-0.5)*160;
+        pos[i+1] = (Math.random()-0.5)*160;
+        pos[i+2] = (Math.random()-0.5)*120;
+      }
+      geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+      const mat = new THREE.PointsMaterial({ color: 0xd4af37, size: 1.2, transparent: true, opacity: 0.65, blending: THREE.AdditiveBlending });
+      const system = new THREE.Points(geo, mat);
+      scene.add(system);
+      let mx=0, my=0;
+      window.addEventListener('mousemove', (e)=>{
+        mx = (e.clientX - window.innerWidth/2)*0.04;
+        my = (e.clientY - window.innerHeight/2)*0.04;
+      });
+      function anim(){
+        requestAnimationFrame(anim);
+        system.rotation.y += 0.0006;
+        system.rotation.x += 0.0003;
+        camera.position.x += (mx*0.35 - camera.position.x)*0.05;
+        camera.position.y += (-my*0.35 - camera.position.y)*0.05;
+        camera.lookAt(scene.position);
+        renderer.render(scene, camera);
+      }
+      anim();
+      window.addEventListener('resize', ()=>{
+        camera.aspect = window.innerWidth/window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+      });
+    })();
+
+    (function initCursor() {
+      const cursor = document.getElementById('custom-cursor');
+      const dot = document.getElementById('custom-cursor-dot');
+      let cx = window.innerWidth/2, cy = window.innerHeight/2, tx = cx, ty = cy;
+      window.addEventListener('mousemove', (e)=>{
+        tx = e.clientX; ty = e.clientY;
+        dot.style.left = tx + 'px'; dot.style.top = ty + 'px';
+      });
+      function render(){
+        cx += (tx-cx)*0.18; cy += (ty-cy)*0.18;
+        cursor.style.left = cx + 'px'; cursor.style.top = cy + 'px';
+        requestAnimationFrame(render);
+      }
+      render();
+      document.querySelectorAll('.glass-card, a, button').forEach(el=>{
+        el.addEventListener('mouseenter', ()=>document.body.classList.add('hover-card'));
+        el.addEventListener('mouseleave', ()=>document.body.classList.remove('hover-card'));
+      });
+    })();
+  </script>
+</body>
+</html>
